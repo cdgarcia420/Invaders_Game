@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://dhmp42l8f12ae"]
+[gd_scene load_steps=3 format=3 uid="uid://dhmp42l8f12ae"]
+
+[ext_resource type="Texture2D" uid="uid://dcvjtvorm450k" path="res://Assets/Title-Screen.png" id="1_c84f7"]
+[ext_resource type="FontFile" uid="uid://dyj538psmdc75" path="res://Assets/borg9.ttf" id="2_4we4d"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -8,24 +11,43 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(577.889, 323.5)
+scale = Vector2(4.50694, 4.50694)
+texture = ExtResource("1_c84f7")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -50.0
-offset_right = 292.0
-offset_bottom = 51.0
+offset_top = -108.5
+offset_right = 463.0
+offset_bottom = 108.5
 grow_vertical = 2
+alignment = 1
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_4we4d")
+theme_override_font_sizes/font_size = 32
 text = "Start Game"
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_4we4d")
+theme_override_font_sizes/font_size = 32
 text = "Options"
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_4we4d")
+theme_override_font_sizes/font_size = 32
 text = "Exit"
