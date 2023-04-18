@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://24dj16g2be51" path="res://Assets/Player.png" id="1_gsid3"]
 
 [node name="Player" type="Area2D"]
+scale = Vector2(2.5, 2.5)
 script = ExtResource("1_f4lax")
 metadata/_edit_group_ = true
 
@@ -13,3 +14,8 @@ texture = ExtResource("1_gsid3")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, -16, -13, 14, 0, 3, 13, 14)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
