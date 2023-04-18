@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cen3l6rqfgmdp"]
+
+[ext_resource type="Script" path="res://Objects/player.gd" id="1_f4lax"]
+[ext_resource type="Texture2D" uid="uid://24dj16g2be51" path="res://Assets/Player.png" id="1_gsid3"]
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_f4lax")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_gsid3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -16, -13, 14, 0, 3, 13, 14)
