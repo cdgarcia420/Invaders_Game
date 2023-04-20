@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Objects/bullet_bad.gd" id="1_lw1sb"]
 [ext_resource type="Texture2D" uid="uid://c33ehajlwb42c" path="res://Assets/Bullet_bad.png" id="1_t7oip"]
 
-[node name="Bullet_bad" type="Area2D"]
+[node name="Bullet_bad" type="Area2D" groups=["projectile"]]
 script = ExtResource("1_lw1sb")
 metadata/_edit_group_ = true
 

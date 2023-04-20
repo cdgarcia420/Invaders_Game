@@ -16,6 +16,6 @@ texture = ExtResource("1_gsid3")
 polygon = PackedVector2Array(0, -16, -13, 14, 0, 3, 13, 14)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.52
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
