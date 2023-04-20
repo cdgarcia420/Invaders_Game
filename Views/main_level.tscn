@@ -1,9 +1,53 @@
-[gd_scene load_steps=2 format=3 uid="uid://lsqapyls18to"]
+[gd_scene load_steps=9 format=3 uid="uid://lsqapyls18to"]
 
+[ext_resource type="Script" path="res://Views/main_level.gd" id="1_gckqo"]
 [ext_resource type="PackedScene" uid="uid://cen3l6rqfgmdp" path="res://Objects/player.tscn" id="1_mdm2p"]
+[ext_resource type="Texture2D" uid="uid://bt8g2o1dneb7p" path="res://Assets/GameBackground.png" id="2_xq7ap"]
+[ext_resource type="Texture2D" uid="uid://c2qbjyhv703hf" path="res://Assets/BarrierTiles.png" id="3_f1aaw"]
+[ext_resource type="Script" path="res://Views/Barriers.gd" id="4_qi6ea"]
+[ext_resource type="AudioStream" uid="uid://d1kei4ljvkqyh" path="res://Assets/sound/LEVEL MAIN.ogg" id="6_y6qhv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h40vv"]
+texture = ExtResource("3_f1aaw")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_4ni20"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_h40vv")
 
 [node name="MainLevel" type="Node2D"]
+script = ExtResource("1_gckqo")
 
 [node name="Player" parent="." instance=ExtResource("1_mdm2p")]
 z_index = 1
 position = Vector2(607, 582)
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("2_xq7ap")
+metadata/_edit_lock_ = true
+
+[node name="Barriers" type="TileMap" parent="."]
+scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_4ni20")
+format = 2
+layer_0/tile_data = PackedInt32Array(917511, 0, 0, 983047, 0, 0, 851976, 0, 0, 917512, 0, 0, 851977, 0, 0, 917513, 0, 0, 917514, 0, 0, 983050, 0, 0, 917521, 0, 0, 983057, 0, 0, 851986, 0, 0, 917522, 0, 0, 851987, 0, 0, 917523, 0, 0, 917524, 0, 0, 983060, 0, 0, 917531, 0, 0, 983067, 0, 0, 851996, 0, 0, 917532, 0, 0, 851997, 0, 0, 917533, 0, 0, 917534, 0, 0, 983070, 0, 0, 851975, 0, 0, 786440, 0, 0, 786441, 0, 0, 851978, 0, 0, 851985, 0, 0, 786450, 0, 0, 786451, 0, 0, 851988, 0, 0, 851995, 0, 0, 786460, 0, 0, 786461, 0, 0, 851998, 0, 0)
+script = ExtResource("4_qi6ea")
+
+[node name="special_enemy_timer" type="Timer" parent="."]
+wait_time = 30.0
+
+[node name="MainLevel Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_y6qhv")

@@ -21,6 +21,7 @@ signal destroyed
 func _ready():
 	screen_size = get_viewport_rect().size
 	player_size = $Sprite2D.get_rect().size * scale
+#	print(player_size)
 	min_x = player_size.x / 2
 	max_x = screen_size.x - player_size.x / 2
 
