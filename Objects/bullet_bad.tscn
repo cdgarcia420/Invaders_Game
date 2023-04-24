@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnyi2dp3piwpn"]
+[gd_scene load_steps=4 format=3 uid="uid://bnyi2dp3piwpn"]
 
 [ext_resource type="Script" path="res://Objects/bullet_bad.gd" id="1_lw1sb"]
 [ext_resource type="Texture2D" uid="uid://c33ehajlwb42c" path="res://Assets/Bullet_bad.png" id="1_t7oip"]
+[ext_resource type="AudioStream" uid="uid://ci5k3a35w35hr" path="res://Assets/sound/shoot.ogg" id="3_hdptr"]
 
-[node name="Bullet_bad" type="Area2D" groups=["projectile"]]
+[node name="Bullet_bad" type="Area2D" groups=["projectile_bad"]]
 script = ExtResource("1_lw1sb")
 metadata/_edit_group_ = true
 
@@ -14,3 +15,6 @@ flip_v = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 rotation = 3.14159
 polygon = PackedVector2Array(-8, 9, 0, -9, 8, 9, 0, 2)
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hdptr")

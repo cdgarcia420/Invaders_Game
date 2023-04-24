@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhmp42l8f12ae"]
+[gd_scene load_steps=5 format=3 uid="uid://dhmp42l8f12ae"]
 
 [ext_resource type="Texture2D" uid="uid://dcvjtvorm450k" path="res://Assets/Title-Screen.png" id="1_c84f7"]
 [ext_resource type="Script" path="res://Views/Main_Menu.gd" id="1_qafeu"]
 [ext_resource type="FontFile" uid="uid://dyj538psmdc75" path="res://Assets/borg9.ttf" id="2_4we4d"]
+[ext_resource type="Theme" uid="uid://3lr5o0dwgpp3" path="res://Objects/mainTheme.tres" id="3_syqxu"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -34,9 +35,7 @@ alignment = 1
 [node name="Button_StartGame" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 1, 0, 1)
-theme_override_fonts/font = ExtResource("2_4we4d")
-theme_override_font_sizes/font_size = 32
+theme = ExtResource("3_syqxu")
 text = "Start Game"
 
 [node name="Button_Options" type="Button" parent="VBoxContainer"]

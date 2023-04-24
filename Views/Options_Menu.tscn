@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://jvrt05u3esp"]
+[gd_scene load_steps=4 format=3 uid="uid://jvrt05u3esp"]
 
+[ext_resource type="Script" path="res://Views/Options_Menu.gd" id="1_6ok33"]
 [ext_resource type="Texture2D" uid="uid://dcvjtvorm450k" path="res://Assets/Title-Screen.png" id="1_40wn0"]
-[ext_resource type="FontFile" uid="uid://dyj538psmdc75" path="res://Assets/borg9.ttf" id="2_d4nh3"]
+[ext_resource type="Theme" uid="uid://3lr5o0dwgpp3" path="res://Objects/mainTheme.tres" id="3_kmr2n"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -10,10 +11,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6ok33")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(576, 324)
-scale = Vector2(4.5, 4.5)
+texture_filter = 1
+position = Vector2(577.889, 323.5)
+scale = Vector2(4.50694, 4.50694)
 texture = ExtResource("1_40wn0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -33,23 +36,25 @@ grow_vertical = 2
 [node name="Button_StartGame" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 1, 0, 1)
-theme_override_fonts/font = ExtResource("2_d4nh3")
-theme_override_font_sizes/font_size = 32
+theme = ExtResource("3_kmr2n")
 text = "Music ON"
 
 [node name="Button_Options" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 1, 0, 1)
-theme_override_fonts/font = ExtResource("2_d4nh3")
-theme_override_font_sizes/font_size = 32
+theme = ExtResource("3_kmr2n")
 text = "Sound Effects ON"
+
+[node name="Button_Info" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_kmr2n")
+text = "Credits & Info"
 
 [node name="Button_Exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 1, 0, 1)
-theme_override_fonts/font = ExtResource("2_d4nh3")
-theme_override_font_sizes/font_size = 32
+theme = ExtResource("3_kmr2n")
 text = "Main Menu"
+
+[connection signal="pressed" from="VBoxContainer/Button_Exit" to="." method="_on_button_exit_pressed"]

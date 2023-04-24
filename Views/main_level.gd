@@ -30,3 +30,15 @@ func _process(delta):
 	var Alien_B = load("res://Scripts/Enemies/Alien.gd").new()
 	if Input.is_action_pressed("settings"):
 		get_tree().change_scene_to_file("res://Views/Main_Menu.tscn")
+
+
+func _on_player_destroyed():
+	$MainLevelMusic.stop()
+	$DeathScreen.show()
+
+func _on_main_menu_pressed():
+	get_tree().change_scene_to_file("res://Views/Main_Menu.tscn")
+
+
+func _on_restart_pressed():
+	get_tree().change_scene_to_file("res://Views/main_level.tscn")

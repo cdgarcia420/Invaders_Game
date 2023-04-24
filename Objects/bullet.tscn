@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://clf1uh1onl8bp"]
+[gd_scene load_steps=4 format=3 uid="uid://clf1uh1onl8bp"]
 
 [ext_resource type="Script" path="res://Objects/bullet.gd" id="1_43d2n"]
 [ext_resource type="Texture2D" uid="uid://dxd2783gliwoq" path="res://Assets/Bullet.png" id="1_tpubb"]
+[ext_resource type="AudioStream" uid="uid://ci5k3a35w35hr" path="res://Assets/sound/shoot.ogg" id="3_5467y"]
 
 [node name="Bullet" type="Area2D" groups=["projectile"]]
 script = ExtResource("1_43d2n")
@@ -12,3 +13,6 @@ texture = ExtResource("1_tpubb")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-8, 9, 0, -9, 8, 9, 0, 2)
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5467y")

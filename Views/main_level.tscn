@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://13hhg826n7s2"]
+[gd_scene load_steps=11 format=3 uid="uid://13hhg826n7s2"]
 
 [ext_resource type="Script" path="res://Views/main_level.gd" id="1_gckqo"]
 [ext_resource type="PackedScene" uid="uid://cen3l6rqfgmdp" path="res://Objects/player.tscn" id="1_mdm2p"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Views/Barriers.gd" id="4_qi6ea"]
 [ext_resource type="AudioStream" uid="uid://d1kei4ljvkqyh" path="res://Assets/sound/LEVEL MAIN.ogg" id="6_y6qhv"]
 [ext_resource type="PackedScene" uid="uid://bel7baf8c7ukv" path="res://Scripts/Enemies/Enemy_A.tscn" id="7_owule"]
+[ext_resource type="Theme" uid="uid://3lr5o0dwgpp3" path="res://Objects/mainTheme.tres" id="8_y413i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h40vv"]
 texture = ExtResource("3_f1aaw")
@@ -54,3 +55,57 @@ wait_time = 30.0
 stream = ExtResource("6_y6qhv")
 
 [node name="Alien" parent="." instance=ExtResource("7_owule")]
+
+[node name="HUD" type="VBoxContainer" parent="."]
+z_index = 2
+offset_left = 16.0
+offset_top = 582.0
+offset_right = 149.0
+offset_bottom = 644.0
+
+[node name="Score" type="Label" parent="HUD"]
+layout_mode = 2
+theme = ExtResource("8_y413i")
+text = "Score: 0"
+
+[node name="Lives" type="Label" parent="HUD"]
+layout_mode = 2
+theme = ExtResource("8_y413i")
+text = "Lives: XXX"
+
+[node name="DeathScreen" type="VBoxContainer" parent="."]
+visible = false
+offset_left = 257.0
+offset_top = 232.0
+offset_right = 962.0
+offset_bottom = 382.0
+metadata/_edit_group_ = true
+
+[node name="GameOver" type="Label" parent="DeathScreen"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("8_y413i")
+theme_override_font_sizes/font_size = 75
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DeathScreen"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Restart" type="Button" parent="DeathScreen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("8_y413i")
+text = "New Game"
+
+[node name="Main Menu" type="Button" parent="DeathScreen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_y413i")
+text = "Main Menu"
+
+[connection signal="destroyed" from="Player" to="." method="_on_player_destroyed"]
+[connection signal="pressed" from="DeathScreen/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="DeathScreen/HBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]

@@ -39,7 +39,6 @@ animations = [{
 }]
 
 [node name="special_enemy" type="Area2D"]
-position = Vector2(24, 17)
 scale = Vector2(2, 2)
 script = ExtResource("1_6s233")
 metadata/_edit_group_ = true

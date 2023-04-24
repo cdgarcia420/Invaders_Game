@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://3lr5o0dwgpp3"]
+
+[ext_resource type="FontFile" uid="uid://dyj538psmdc75" path="res://Assets/borg9.ttf" id="1_7qt0q"]
+
+[resource]
+Button/colors/font_color = Color(0, 1, 0, 1)
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_7qt0q")
+Label/colors/font_color = Color(0, 1, 0, 1)
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_7qt0q")

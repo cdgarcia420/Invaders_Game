@@ -10,6 +10,9 @@ var SPEED = 1.5
 var Move_Right = true
 var Move_Down = false
 
+# Random Variables
+var timer_wait = randf_range(1, 5)
+
 # Movement Functions
 var First_Move = true
 var Max_X_Dist = 1100
@@ -22,6 +25,9 @@ var StartPosX = 0
 var StartPosY = 0
 @onready var _animation_alien = $AnimatedSprite2D
 
+# Scene preloads
+var shot = preload("res://Objects/bullet_bad.tscn")
+
 func _start():
 	#If NOT DEAD, place the Alien at its starting position
 	if(!isDead):
@@ -31,9 +37,10 @@ func _start():
 func _ready():
 	#_animation_alien.play("default")
 	$AnimatedSprite2D.play()		# Easy way to play the animation. Changed from 5fps to 2fps to matech special enemy
-	pass
+	$Timer.set_wait_time(timer_wait)
 
 func _process(delta):
+	_bulletTime()
 	if(Start):
 		return
 	if(Move_Down):
@@ -54,10 +61,24 @@ func _process(delta):
 
 # Tells the Alien when to shoot; passes a boolean upon timeout
 func _on_timer_timeout():
-	pass
+	shoot = true
+
 # Detects if the Alien has a shooting boolean enabled, and if so, shoots the bullet.
-func _bulletTime(shoot): 
-	if(shoot):
-		pass
-	else:
-		pass
+func _bulletTime(): 
+	if shoot:
+		var stage_node = get_parent()
+		var shot_instance = shot.instantiate()
+		shot_instance.position = position
+		stage_node.add_child(shot_instance)
+		
+		shoot = false
+		$Timer.start()
+
+
+func _on_area_entered(area):
+	if area.is_in_group("projectile"):
+		$EnemySounds.play()
+		shoot = false
+		$Timer.stop()
+		hide()
+		

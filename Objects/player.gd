@@ -13,8 +13,13 @@ var max_x
 
 var shot = preload("res://Objects/bullet.tscn")
 var can_shoot = true
+var dead = false
+
+var explosion = load("res://Assets/sound/destroy.ogg")
+var level_lose = load("res://Assets/sound/LEVEL LOSE.ogg")
 
 signal destroyed
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -29,11 +34,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
-	if Input.is_action_pressed("move_right"):
+	if Input.is_action_pressed("move_right") and !dead:
 		velocity.x += 1
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed("move_left") and !dead:
 		velocity.x -= 1
-	if Input.is_action_pressed("shoot") and can_shoot:
+	if Input.is_action_pressed("shoot") and can_shoot and !dead:
 		var stage_node = get_parent()
 		var shot_instance = shot.instantiate()
 		shot_instance.position = position
@@ -53,3 +58,14 @@ func _process(delta):
 
 func _on_timer_timeout():
 	can_shoot = true
+
+
+func _on_area_entered(area):
+	if area.is_in_group("projectile_bad"):
+		dead = true
+		emit_signal("destroyed")
+		hide()
+		$PlayerSounds.set_stream(explosion)
+		$PlayerSounds.play()
+		$PlayerSounds.set_stream(level_lose)
+		$PlayerSounds.play()
