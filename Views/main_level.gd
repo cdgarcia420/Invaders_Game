@@ -7,6 +7,8 @@ var Alien_Arr
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$MainLevelMusic.play()
+	
 	var Alien_A = load("res://Scripts/Enemies/Alien.gd").new()
 	
 	#Creates the array of enemies
@@ -26,4 +28,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var Alien_B = load("res://Scripts/Enemies/Alien.gd").new()
-	pass
+	if Input.is_action_pressed("settings"):
+		get_tree().change_scene_to_file("res://Views/Main_Menu.tscn")

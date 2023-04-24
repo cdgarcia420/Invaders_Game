@@ -39,11 +39,15 @@ animations = [{
 }]
 
 [node name="special_enemy" type="Area2D"]
+position = Vector2(24, 17)
+scale = Vector2(2, 2)
 script = ExtResource("1_6s233")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ixqv0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_igno7")
 frame_progress = 0.489008

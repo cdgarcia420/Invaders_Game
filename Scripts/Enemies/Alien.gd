@@ -30,6 +30,7 @@ func _start():
 
 func _ready():
 	#_animation_alien.play("default")
+	$AnimatedSprite2D.play()		# Easy way to play the animation. Changed from 5fps to 2fps to matech special enemy
 	pass
 
 func _process(delta):

@@ -50,7 +50,7 @@ script = ExtResource("4_qi6ea")
 [node name="special_enemy_timer" type="Timer" parent="."]
 wait_time = 30.0
 
-[node name="MainLevel Music" type="AudioStreamPlayer" parent="."]
+[node name="MainLevelMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_y6qhv")
 
 [node name="Alien" parent="." instance=ExtResource("7_owule")]
