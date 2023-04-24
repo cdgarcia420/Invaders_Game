@@ -1,12 +1,13 @@
 extends Area2D
 
 var screen_size
-const MOVE_SPEED = 500
+const MOVE_SPEED = 100
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	$AnimatedSprite2D.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
