@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bel7baf8c7ukv"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Alien.gd" id="1_31fyc"]
+[ext_resource type="Texture2D" uid="uid://ddbxysfccsh5n" path="res://Assets/Carl1.png" id="1_si5o8"]
+[ext_resource type="Texture2D" uid="uid://3qmi6kpc31pk" path="res://Assets/Carl2.png" id="2_5kpij"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Alien_Anim.gd" id="4_waast"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vxvfw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_si5o8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5kpij")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_edcjs"]
+size = Vector2(28, 35)
+
+[node name="Alien" type="Node2D"]
+
+[node name="Alien" type="Area2D" parent="."]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_31fyc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Alien"]
+texture_filter = 1
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vxvfw")
+frame_progress = 0.97725
+script = ExtResource("4_waast")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alien"]
+position = Vector2(32, 23.5)
+shape = SubResource("RectangleShape2D_edcjs")
+
+[node name="Timer" type="Timer" parent="Alien"]
+autostart = true
