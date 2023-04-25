@@ -15,7 +15,7 @@ var timer_wait = randf_range(1, 5)
 
 # Movement Functions
 var First_Move = true
-var Max_X_Dist = 1100
+var Max_X_Dist = 600
 var Dist_Moved = 0
 var Dist_Move_Down = 10
 var Start = false
