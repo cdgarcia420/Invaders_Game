@@ -2,16 +2,18 @@ extends Node2D
 class_name Alien
 
 #Status Variables
+
 var shoot = false
 var isDead = true
+var init_shot = true
 
 # Movement variables
-var SPEED = 1.5
+var SPEED = 0.5
 var Move_Right = true
 var Move_Down = false
 
 # Random Variables
-var timer_wait = randf_range(1, 5)
+var timer_wait = randf_range(1, randf_range(2,100))
 
 # Movement Functions
 var First_Move = true
@@ -35,8 +37,9 @@ func _start():
 		StartPosY = position.y
 
 func _ready():
+	SPEED += Globals.level_Num
 	#_animation_alien.play("default")
-	$AnimatedSprite2D.play()		# Easy way to play the animation. Changed from 5fps to 2fps to matech special enemy
+	$AnimatedSprite2D.play()		# Easy way to play the animation. Changed from 5fps to 2fps to match special enemy
 	$Timer.set_wait_time(timer_wait)
 
 func _process(delta):
@@ -61,10 +64,14 @@ func _process(delta):
 
 # Tells the Alien when to shoot; passes a boolean upon timeout
 func _on_timer_timeout():
-	shoot = true
+	if init_shot:
+		init_shot = false
+		pass
+	else:
+		shoot = true
 
 # Detects if the Alien has a shooting boolean enabled, and if so, shoots the bullet.
-func _bulletTime(): 
+func _bulletTime():
 	if shoot:
 		var stage_node = get_parent()
 		var shot_instance = shot.instantiate()

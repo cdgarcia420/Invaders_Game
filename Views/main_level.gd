@@ -8,7 +8,7 @@ var Alien_Arr
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$MainLevelMusic.play()
-	
+	Globals.level_Num += 1
 	var Alien_A = load("res://Scripts/Enemies/Alien.gd").new()
 	
 	#Creates the array of enemies
