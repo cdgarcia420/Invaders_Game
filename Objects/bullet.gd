@@ -11,7 +11,9 @@ signal crusher(body)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-	$ShootSound.play()
+	
+	if Globals.sfx_on:
+		$ShootSound.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -68,5 +70,7 @@ func _on_body_entered(body):
 func _on_area_entered(area):
 	if area.is_in_group("enemy"):
 		emit_signal("killed")
+		queue_free()
 	elif area.is_in_group("special_enemy"):
 		emit_signal("special_killed")
+		queue_free()

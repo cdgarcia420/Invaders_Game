@@ -32,6 +32,9 @@ func _ready():
 	max_x = screen_size.x - player_size.x / 2
 	
 	stage_node = get_parent()
+	
+	$Timer.wait_time -= (0.8)*float(Globals.level_Num)
+	speed += (0.8)*float(Globals.level_Num)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -65,8 +68,8 @@ func _process(delta):
 	position.x = clamp(position.x, min_x, max_x)
 	position.y = clamp(position.y, 0, screen_size.y)
 
-func _on_crushed(body, shot):
-	var bullet_cell_position = body.local_to_map(shot.position)/2
+func _on_crushed(body, bullet):
+	var bullet_cell_position = body.local_to_map(bullet.position)/2
 #	var bullet_cell_position = Vector2i(18, 14)
 #	var bullet_cell_position = floor(shot.position/16)
 	var data = body.get_cell_tile_data(0, bullet_cell_position)
@@ -95,4 +98,5 @@ func _on_area_entered(area):
 		emit_signal("destroyed")
 		hide()
 #		$PlayerSounds.set_stream(explosion)
-		$PlayerSounds.play()
+		if Globals.sfx_on:
+			$PlayerSounds.play()

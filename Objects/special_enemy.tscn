@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b661612e8w20m"]
+[gd_scene load_steps=12 format=3 uid="uid://b661612e8w20m"]
 
 [ext_resource type="Script" path="res://Objects/special_enemy.gd" id="1_6s233"]
 [ext_resource type="Texture2D" uid="uid://cs50qb0p266ni" path="res://Assets/Kansas1.png" id="1_6yun4"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cw14cbokug2at" path="res://Assets/Kansas5.png" id="5_wia1p"]
 [ext_resource type="Texture2D" uid="uid://c3apcrgiir80c" path="res://Assets/Kansas6.png" id="6_a6jho"]
 [ext_resource type="AudioStream" uid="uid://xpsqoro4b5pc" path="res://Assets/sound/destroy.ogg" id="8_lbi25"]
+[ext_resource type="AudioStream" uid="uid://dh0e17fbhki7s" path="res://Assets/sound/flyby.ogg" id="9_mli1f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ixqv0"]
 radius = 8.0
@@ -54,5 +55,8 @@ frame_progress = 0.489008
 
 [node name="EnemySounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_lbi25")
+
+[node name="SpecialEnter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_mli1f")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

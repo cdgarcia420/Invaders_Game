@@ -34,18 +34,24 @@ alignment = 1
 [node name="Button_StartGame" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Button_Exit")
+focus_neighbor_bottom = NodePath("../Button_Options")
 theme = ExtResource("3_syqxu")
 text = "Start Game"
 
 [node name="Button_Options" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Button_StartGame")
+focus_neighbor_bottom = NodePath("../Button_Exit")
 theme = ExtResource("3_syqxu")
 text = "Options"
 
 [node name="Button_Exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Button_Options")
+focus_neighbor_bottom = NodePath("../Button_StartGame")
 theme = ExtResource("3_syqxu")
 text = "Exit"
 

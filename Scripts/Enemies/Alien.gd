@@ -26,6 +26,9 @@ var Start = false
 var StartPosX = 0
 var StartPosY = 0
 
+# Screen Size
+var screen_size
+
 # Scene preloads
 var shot = preload("res://Objects/bullet_bad.tscn")
 #Create Timers For the Aliens
@@ -44,11 +47,14 @@ func _start():
 		StartPosY = position.y
 
 func _ready():
+	screen_size = get_viewport_rect().size
+	
 	randomize()
 	timer_wait = randf_range(1, 5)
+	timer_wait -= (0.8)*float(Globals.level_Num)
 	
 	init_Timer()
-	SPEED += (3.0/8.0)*float(Globals.level_Num)
+	SPEED += (0.8)*float(Globals.level_Num)
 	#_animation_alien.play("default")
 	$AnimatedSprite2D.play()		# Easy way to play the animation. Changed from 5fps to 2fps to match special enemy
 	$Timer.set_wait_time(timer_wait)
@@ -76,6 +82,9 @@ func _process(_delta):
 		Dist_Moved = 0
 		Move_Right = !Move_Right
 	
+	if position.y >= screen_size.y:
+		queue_free()
+	
 
 # Tells the Alien when to shoot; passes a boolean upon timeout
 func _on_timer_timeout():
@@ -98,9 +107,10 @@ func _bulletTime():
 		shoot = false
 		$Timer.start()
 
-func _on_crushed(body, shot):
-	var bullet_cell_position = body.local_to_map(shot.position)/2
-	bullet_cell_position.y += 1
+func _on_crushed(body, bullet):
+	var bullet_cell_position = body.local_to_map(bullet.position)/2
+	bullet_cell_position.x += 1
+	bullet_cell_position.y += 3
 #	var bullet_cell_position = Vector2i(18, 14)
 #	var bullet_cell_position = floor(shot.position/16)
 	var data = body.get_cell_tile_data(0, bullet_cell_position)
@@ -122,7 +132,8 @@ func _on_crushed(body, shot):
 func _on_area_entered(area):
 	if area.is_in_group("projectile"):
 		emit_signal("killed")
-		$EnemySounds.play()
+		if Globals.sfx_on:
+			$EnemySounds.play()
 		shoot = false
 		isDead = true
 		$Timer.stop()

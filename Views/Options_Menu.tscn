@@ -33,28 +33,58 @@ offset_bottom = 252.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button_StartGame" type="Button" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_kmr2n")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "Custom Level"
+horizontal_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button_MusicToggle" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Button_Exit")
+focus_neighbor_bottom = NodePath("../Button_SFXToggle")
 theme = ExtResource("3_kmr2n")
 text = "Music ON"
 
-[node name="Button_Options" type="Button" parent="VBoxContainer"]
+[node name="Button_SFXToggle" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Button_MusicToggle")
+focus_neighbor_bottom = NodePath("../Button_Info")
 theme = ExtResource("3_kmr2n")
 text = "Sound Effects ON"
 
 [node name="Button_Info" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Button_SFXToggle")
+focus_neighbor_bottom = NodePath("../Button_Exit")
 theme = ExtResource("3_kmr2n")
 text = "Credits & Info"
 
 [node name="Button_Exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Button_Info")
+focus_neighbor_bottom = NodePath("../Button_MusicToggle")
 theme = ExtResource("3_kmr2n")
 text = "Main Menu"
 
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/SpinBox" to="." method="_on_spin_box_value_changed"]
+[connection signal="pressed" from="VBoxContainer/Button_MusicToggle" to="." method="_on_button_music_toggle_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button_SFXToggle" to="." method="_on_button_sfx_toggle_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button_Info" to="." method="_on_button_info_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button_Exit" to="." method="_on_button_exit_pressed"]

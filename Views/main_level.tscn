@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://13hhg826n7s2"]
+[gd_scene load_steps=12 format=3 uid="uid://13hhg826n7s2"]
 
 [ext_resource type="Script" path="res://Views/main_level.gd" id="1_gckqo"]
 [ext_resource type="PackedScene" uid="uid://cen3l6rqfgmdp" path="res://Objects/player.tscn" id="1_mdm2p"]
@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Views/Barriers.gd" id="4_qi6ea"]
 [ext_resource type="AudioStream" uid="uid://d1kei4ljvkqyh" path="res://Assets/sound/LEVEL MAIN.ogg" id="6_y6qhv"]
 [ext_resource type="PackedScene" uid="uid://bel7baf8c7ukv" path="res://Scripts/Enemies/Enemy_A.tscn" id="7_owule"]
-[ext_resource type="Theme" path="res://Objects/mainTheme.tres" id="8_y413i"]
+[ext_resource type="Theme" uid="uid://3lr5o0dwgpp3" path="res://Objects/mainTheme.tres" id="8_y413i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h40vv"]
 texture = ExtResource("3_f1aaw")
@@ -37,6 +37,9 @@ custom_data_layer_0/name = "Breakage"
 custom_data_layer_0/type = 2
 sources/0 = SubResource("TileSetAtlasSource_h40vv")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqeih"]
+size = Vector2(1152, 137)
+
 [node name="MainLevel" type="Node2D"]
 script = ExtResource("1_gckqo")
 
@@ -63,106 +66,114 @@ autostart = true
 [node name="MainLevelMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_y6qhv")
 
-[node name="Alien" parent="." instance=ExtResource("7_owule")]
+[node name="Army" type="Node2D" parent="."]
+position = Vector2(40, 72)
+
+[node name="Alien" parent="Army" instance=ExtResource("7_owule")]
 scale = Vector2(1, 1)
 
-[node name="Alien2" parent="." instance=ExtResource("7_owule")]
+[node name="Alien2" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(60, 0)
 scale = Vector2(1, 1)
 
-[node name="Alien3" parent="." instance=ExtResource("7_owule")]
+[node name="Alien3" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(120, 0)
 scale = Vector2(1, 1)
 
-[node name="Alien4" parent="." instance=ExtResource("7_owule")]
+[node name="Alien4" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(180, 0)
 scale = Vector2(1, 1)
 
-[node name="Alien5" parent="." instance=ExtResource("7_owule")]
+[node name="Alien5" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(240, 0)
 scale = Vector2(1, 1)
 
-[node name="Alien6" parent="." instance=ExtResource("7_owule")]
+[node name="Alien6" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(300, 0)
 scale = Vector2(1, 1)
 
-[node name="Alien7" parent="." instance=ExtResource("7_owule")]
+[node name="Alien7" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(360, 0)
 scale = Vector2(1, 1)
 
-[node name="Alien8" parent="." instance=ExtResource("7_owule")]
+[node name="Alien8" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(420, 0)
 scale = Vector2(1, 1)
 
-[node name="Alien9" parent="." instance=ExtResource("7_owule")]
+[node name="Alien9" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(480, 0)
 scale = Vector2(1, 1)
 
-[node name="Alien10" parent="." instance=ExtResource("7_owule")]
+[node name="Alien10" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(0, 60)
 scale = Vector2(1, 1)
 
-[node name="Alien11" parent="." instance=ExtResource("7_owule")]
+[node name="Alien11" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(60, 60)
 scale = Vector2(1, 1)
 
-[node name="Alien12" parent="." instance=ExtResource("7_owule")]
+[node name="Alien12" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(120, 60)
 scale = Vector2(1, 1)
 
-[node name="Alien13" parent="." instance=ExtResource("7_owule")]
+[node name="Alien13" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(180, 60)
 scale = Vector2(1, 1)
 
-[node name="Alien14" parent="." instance=ExtResource("7_owule")]
+[node name="Alien14" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(240, 60)
 scale = Vector2(1, 1)
 
-[node name="Alien15" parent="." instance=ExtResource("7_owule")]
+[node name="Alien15" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(300, 60)
 scale = Vector2(1, 1)
 
-[node name="Alien16" parent="." instance=ExtResource("7_owule")]
+[node name="Alien16" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(360, 60)
 scale = Vector2(1, 1)
 
-[node name="Alien17" parent="." instance=ExtResource("7_owule")]
+[node name="Alien17" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(420, 60)
 scale = Vector2(1, 1)
 
-[node name="Alien18" parent="." instance=ExtResource("7_owule")]
+[node name="Alien18" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(480, 60)
 scale = Vector2(1, 1)
 
-[node name="Alien19" parent="." instance=ExtResource("7_owule")]
+[node name="Alien19" parent="Army" instance=ExtResource("7_owule")]
+position = Vector2(0, 120)
+scale = Vector2(1, 1)
+
+[node name="Alien20" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(60, 120)
 scale = Vector2(1, 1)
 
-[node name="Alien20" parent="." instance=ExtResource("7_owule")]
+[node name="Alien21" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(120, 120)
 scale = Vector2(1, 1)
 
-[node name="Alien21" parent="." instance=ExtResource("7_owule")]
+[node name="Alien22" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(180, 120)
+rotation = 0.023085
 scale = Vector2(1, 1)
 
-[node name="Alien22" parent="." instance=ExtResource("7_owule")]
+[node name="Alien23" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(240, 120)
 scale = Vector2(1, 1)
 
-[node name="Alien23" parent="." instance=ExtResource("7_owule")]
+[node name="Alien24" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(300, 120)
 scale = Vector2(1, 1)
 
-[node name="Alien24" parent="." instance=ExtResource("7_owule")]
+[node name="Alien25" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(360, 120)
 scale = Vector2(1, 1)
 
-[node name="Alien25" parent="." instance=ExtResource("7_owule")]
+[node name="Alien26" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(420, 120)
 scale = Vector2(1, 1)
 
-[node name="Alien26" parent="." instance=ExtResource("7_owule")]
+[node name="Alien27" parent="Army" instance=ExtResource("7_owule")]
 position = Vector2(480, 120)
 scale = Vector2(1, 1)
 
@@ -170,29 +181,36 @@ scale = Vector2(1, 1)
 offset_left = 16.0
 offset_top = 582.0
 offset_right = 149.0
-offset_bottom = 644.0
+offset_bottom = 611.0
 
 [node name="Score" type="Label" parent="HUD"]
 layout_mode = 2
 theme = ExtResource("8_y413i")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-text = "Score: 0"
+text = "Score	 0"
+
+[node name="Level" type="Label" parent="HUD"]
+layout_mode = 2
+theme = ExtResource("8_y413i")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Level	 1"
 
 [node name="ResultsScreen" type="VBoxContainer" parent="."]
 visible = false
 z_index = 2
-offset_left = 257.0
-offset_top = 232.0
-offset_right = 962.0
-offset_bottom = 382.0
+offset_left = 192.0
+offset_top = 224.0
+offset_right = 960.0
+offset_bottom = 416.0
+size_flags_horizontal = 4
 metadata/_edit_group_ = true
 
 [node name="GameOver" type="Label" parent="ResultsScreen"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("8_y413i")
-theme_override_font_sizes/font_size = 75
-text = "GAME OVER"
+theme_override_font_sizes/font_size = 64
+text = "Game Over"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ResultsScreen"]
@@ -217,7 +235,15 @@ position = Vector2(-16, 16)
 
 [node name="MainLevelResultSound" type="AudioStreamPlayer" parent="."]
 
+[node name="DeathBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathBox"]
+position = Vector2(576, 580.5)
+shape = SubResource("RectangleShape2D_gqeih")
+
+[connection signal="level_finished" from="." to="." method="_on_level_finished"]
 [connection signal="destroyed" from="Player" to="." method="_on_player_destroyed"]
 [connection signal="timeout" from="special_enemy_timer" to="." method="_on_special_enemy_timer_timeout"]
 [connection signal="pressed" from="ResultsScreen/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="ResultsScreen/HBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="area_entered" from="DeathBox" to="." method="_on_death_box_area_entered"]

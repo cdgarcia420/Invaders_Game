@@ -1,11 +1,11 @@
 extends Node2D
-var level_Num = 1
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+# Level Variables
+var level_Num = 0
+var score = 0
 
+# User Options
+var music_on = true
+var sfx_on = true
+var custom_level = 0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

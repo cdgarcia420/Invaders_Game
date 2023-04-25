@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjdioaf50l6n8"]
+
+[ext_resource type="Script" path="res://Views/CreditsInfo.gd" id="1_51vga"]
+[ext_resource type="Texture2D" uid="uid://dcvjtvorm450k" path="res://Assets/Title-Screen.png" id="1_148cg"]
+[ext_resource type="Theme" uid="uid://3lr5o0dwgpp3" path="res://Objects/mainTheme.tres" id="2_tynxa"]
+
+[node name="CreditsInfo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_51vga")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(577.889, 323.5)
+scale = Vector2(4.50694, 4.50694)
+texture = ExtResource("1_148cg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.056
+anchor_top = 0.099
+anchor_right = 0.944
+anchor_bottom = 0.889
+offset_left = -0.512001
+offset_top = -0.152008
+offset_right = 0.511963
+offset_bottom = -0.0720215
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_tynxa")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_font_sizes/font_size = 32
+text = "Invaders Game
+Made By Sean Davis and Cam Garcia
+for SE393 
+Software Patterns & team Development
+
+Developed with the Godot Engine
+
+Art assets made with LibreSprite
+
+SFX made with chiptones
+
+Game Music made with Cardboardbox"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_tynxa")
+text = "Options"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
