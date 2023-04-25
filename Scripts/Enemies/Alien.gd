@@ -2,11 +2,13 @@ extends Node2D
 class_name Alien
 
 #Status Variables
+
 var shoot = false
 var isDead = false
+var init_shot = true
 
 # Movement variables
-var SPEED = 1.5
+var SPEED = 0.5
 var Move_Right = true
 var Move_Down = false
 
@@ -15,7 +17,7 @@ var timer_wait
 
 # Movement Functions
 var First_Move = true
-var Max_X_Dist = 1100
+var Max_X_Dist = 600
 var Dist_Moved = 0
 var Dist_Move_Down = 10
 var Start = false
@@ -23,10 +25,14 @@ var Start = false
 # Reset Invader(s)
 var StartPosX = 0
 var StartPosY = 0
-@onready var _animation_alien = $AnimatedSprite2D
 
 # Scene preloads
 var shot = preload("res://Objects/bullet_bad.tscn")
+#Create Timers For the Aliens
+func init_Timer():
+	randomize()
+	timer_wait = randf_range(1, randf_range(2,50))
+
 
 # Signals
 signal killed
@@ -41,11 +47,13 @@ func _ready():
 	randomize()
 	timer_wait = randf_range(1, 5)
 	
+	init_Timer()
+	SPEED += (3.0/8.0)*float(Globals.level_Num)
 	#_animation_alien.play("default")
-	$AnimatedSprite2D.play()		# Easy way to play the animation. Changed from 5fps to 2fps to matech special enemy
+	$AnimatedSprite2D.play()		# Easy way to play the animation. Changed from 5fps to 2fps to match special enemy
 	$Timer.set_wait_time(timer_wait)
 
-func _process(delta):
+func _process(_delta):
 	_bulletTime()
 	
 	if !$EnemySounds.is_playing() and isDead:
@@ -71,10 +79,14 @@ func _process(delta):
 
 # Tells the Alien when to shoot; passes a boolean upon timeout
 func _on_timer_timeout():
-	shoot = true
+	if init_shot:
+		init_shot = false
+		pass
+	else:
+		shoot = true
 
 # Detects if the Alien has a shooting boolean enabled, and if so, shoots the bullet.
-func _bulletTime(): 
+func _bulletTime():
 	if shoot:
 		var stage_node = get_parent()
 		var shot_instance = shot.instantiate()

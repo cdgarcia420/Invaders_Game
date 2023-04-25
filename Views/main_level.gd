@@ -20,6 +20,7 @@ func _ready():
 	
 	
 	var Alien_A = load("res://Scripts/Enemies/Alien.gd").new()
+	Globals.level_Num += 1
 	
 	#Creates the array of enemies
 #	for j in range(0,4):
@@ -37,7 +38,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var Alien_B = load("res://Scripts/Enemies/Alien.gd").new()
 	if Input.is_action_pressed("settings"):
 		get_tree().change_scene_to_file("res://Views/Main_Menu.tscn")
 
