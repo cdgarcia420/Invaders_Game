@@ -13,7 +13,7 @@ var Move_Right = true
 var Move_Down = false
 
 # Random Variables
-var timer_wait = randf_range(1, randf_range(2,100))
+var timer_wait
 
 # Movement Functions
 var First_Move = true
@@ -25,10 +25,14 @@ var Start = false
 # Reset Invader(s)
 var StartPosX = 0
 var StartPosY = 0
-@onready var _animation_alien = $AnimatedSprite2D
 
 # Scene preloads
 var shot = preload("res://Objects/bullet_bad.tscn")
+#Create Timers For the Aliens
+func init_Timer():
+	randomize()
+	timer_wait = randf_range(1, randf_range(2,50))
+
 
 func _start():
 	#If NOT DEAD, place the Alien at its starting position
@@ -37,12 +41,13 @@ func _start():
 		StartPosY = position.y
 
 func _ready():
-	SPEED += Globals.level_Num
+	init_Timer()
+	SPEED += (3.0/8.0)*float(Globals.level_Num)
 	#_animation_alien.play("default")
 	$AnimatedSprite2D.play()		# Easy way to play the animation. Changed from 5fps to 2fps to match special enemy
 	$Timer.set_wait_time(timer_wait)
 
-func _process(delta):
+func _process(_delta):
 	_bulletTime()
 	if(Start):
 		return
