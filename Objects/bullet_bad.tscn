@@ -18,3 +18,5 @@ polygon = PackedVector2Array(-8, 9, 0, -9, 8, 9, 0, 2)
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_hdptr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

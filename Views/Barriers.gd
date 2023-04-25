@@ -12,3 +12,4 @@ func _process(delta):
 
 func on_shot():
 	# TODO Make a way to detect if the barrier has been shot
+	pass

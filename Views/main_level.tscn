@@ -14,26 +14,31 @@ texture = ExtResource("3_f1aaw")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+0:0/0/custom_data_0 = 3
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0/custom_data_0 = 2
 0:1/0 = 0
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0/custom_data_0 = 1
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_4ni20"]
 physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "Breakage"
+custom_data_layer_0/type = 2
 sources/0 = SubResource("TileSetAtlasSource_h40vv")
 
 [node name="MainLevel" type="Node2D"]
 script = ExtResource("1_gckqo")
-
-[node name="Player" parent="." instance=ExtResource("1_mdm2p")]
-z_index = 1
-position = Vector2(607, 582)
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
@@ -41,23 +46,27 @@ scale = Vector2(4.5, 4.5)
 texture = ExtResource("2_xq7ap")
 metadata/_edit_lock_ = true
 
+[node name="Player" parent="." instance=ExtResource("1_mdm2p")]
+position = Vector2(576, 582)
+
 [node name="Barriers" type="TileMap" parent="."]
 scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_4ni20")
 format = 2
-layer_0/tile_data = PackedInt32Array(917511, 0, 0, 983047, 0, 0, 851976, 0, 0, 917512, 0, 0, 851977, 0, 0, 917513, 0, 0, 917514, 0, 0, 983050, 0, 0, 917521, 0, 0, 983057, 0, 0, 851986, 0, 0, 917522, 0, 0, 851987, 0, 0, 917523, 0, 0, 917524, 0, 0, 983060, 0, 0, 917531, 0, 0, 983067, 0, 0, 851996, 0, 0, 917532, 0, 0, 851997, 0, 0, 917533, 0, 0, 917534, 0, 0, 983070, 0, 0, 851975, 0, 0, 786440, 0, 0, 786441, 0, 0, 851978, 0, 0, 851985, 0, 0, 786450, 0, 0, 786451, 0, 0, 851988, 0, 0, 851995, 0, 0, 786460, 0, 0, 786461, 0, 0, 851998, 0, 0)
+layer_0/tile_data = PackedInt32Array(851975, 0, 0, 917511, 0, 0, 786440, 0, 0, 851976, 0, 0, 917512, 0, 0, 851977, 0, 0, 917513, 0, 0, 851985, 0, 0, 917521, 0, 0, 786450, 0, 0, 851986, 0, 0, 851987, 0, 0, 917523, 0, 0, 851995, 0, 0, 917531, 0, 0, 786460, 0, 0, 851996, 0, 0, 917532, 0, 0, 851997, 0, 0, 917533, 0, 0, 851974, 0, 0, 917510, 0, 0, 983046, 0, 0, 786439, 0, 0, 983049, 0, 0, 851984, 0, 0, 917520, 0, 0, 983056, 0, 0, 786449, 0, 0, 983059, 0, 0, 851994, 0, 0, 917530, 0, 0, 983066, 0, 0, 786459, 0, 0, 983069, 0, 0, 917522, 0, 0)
 script = ExtResource("4_qi6ea")
 
 [node name="special_enemy_timer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 10.0
+autostart = true
 
 [node name="MainLevelMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_y6qhv")
 
 [node name="Alien" parent="." instance=ExtResource("7_owule")]
+position = Vector2(16, 16)
 
 [node name="HUD" type="VBoxContainer" parent="."]
-z_index = 2
 offset_left = 16.0
 offset_top = 582.0
 offset_right = 149.0
@@ -66,22 +75,19 @@ offset_bottom = 644.0
 [node name="Score" type="Label" parent="HUD"]
 layout_mode = 2
 theme = ExtResource("8_y413i")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "Score: 0"
 
-[node name="Lives" type="Label" parent="HUD"]
-layout_mode = 2
-theme = ExtResource("8_y413i")
-text = "Lives: XXX"
-
-[node name="DeathScreen" type="VBoxContainer" parent="."]
+[node name="ResultsScreen" type="VBoxContainer" parent="."]
 visible = false
+z_index = 2
 offset_left = 257.0
 offset_top = 232.0
 offset_right = 962.0
 offset_bottom = 382.0
 metadata/_edit_group_ = true
 
-[node name="GameOver" type="Label" parent="DeathScreen"]
+[node name="GameOver" type="Label" parent="ResultsScreen"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("8_y413i")
@@ -89,23 +95,29 @@ theme_override_font_sizes/font_size = 75
 text = "GAME OVER"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="DeathScreen"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ResultsScreen"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Restart" type="Button" parent="DeathScreen/HBoxContainer"]
+[node name="Restart" type="Button" parent="ResultsScreen/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("8_y413i")
 text = "New Game"
 
-[node name="Main Menu" type="Button" parent="DeathScreen/HBoxContainer"]
+[node name="MainMenu" type="Button" parent="ResultsScreen/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("8_y413i")
 text = "Main Menu"
 
+[node name="SpecialEnemySpawn" type="Marker2D" parent="."]
+position = Vector2(-16, 16)
+
+[node name="MainLevelResultSound" type="AudioStreamPlayer" parent="."]
+
 [connection signal="destroyed" from="Player" to="." method="_on_player_destroyed"]
-[connection signal="pressed" from="DeathScreen/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="DeathScreen/HBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="timeout" from="special_enemy_timer" to="." method="_on_special_enemy_timer_timeout"]
+[connection signal="pressed" from="ResultsScreen/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="ResultsScreen/HBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

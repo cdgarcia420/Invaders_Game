@@ -3,6 +3,7 @@ extends Area2D
 var screen_size
 const MOVE_SPEED = 250
 
+signal crusher(body)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,3 +17,10 @@ func _process(delta):
 	position += Vector2(0.0, MOVE_SPEED * delta)
 	if position.y >= screen_size.y + 8:
 		self.queue_free()
+
+
+func _on_body_entered(body):
+	if body is TileMap:
+		hide()
+		crusher.emit(body)
+		queue_free()

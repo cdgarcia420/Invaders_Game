@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b661612e8w20m"]
+[gd_scene load_steps=11 format=3 uid="uid://b661612e8w20m"]
 
 [ext_resource type="Script" path="res://Objects/special_enemy.gd" id="1_6s233"]
 [ext_resource type="Texture2D" uid="uid://cs50qb0p266ni" path="res://Assets/Kansas1.png" id="1_6yun4"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ejkflmttoww1" path="res://Assets/Kansas4.png" id="4_5ktwp"]
 [ext_resource type="Texture2D" uid="uid://cw14cbokug2at" path="res://Assets/Kansas5.png" id="5_wia1p"]
 [ext_resource type="Texture2D" uid="uid://c3apcrgiir80c" path="res://Assets/Kansas6.png" id="6_a6jho"]
+[ext_resource type="AudioStream" uid="uid://xpsqoro4b5pc" path="res://Assets/sound/destroy.ogg" id="8_lbi25"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ixqv0"]
 radius = 8.0
@@ -38,7 +39,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="special_enemy" type="Area2D"]
+[node name="special_enemy" type="Area2D" groups=["special_enemy"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_6s233")
 metadata/_edit_group_ = true
@@ -50,3 +51,8 @@ shape = SubResource("CapsuleShape2D_ixqv0")
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_igno7")
 frame_progress = 0.489008
+
+[node name="EnemySounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_lbi25")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
